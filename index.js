@@ -27,4 +27,12 @@ app.post('/komik', async (req, res) => {
     }
 });
 
+app.get('/komik', async (req, res) => {
+    try {
+        const komik = await db.Komik.findAll();
+        res.send(komik);
+    } catch (error) {
+        res.status(500).send({message: error.message});
+    }
+});
 
